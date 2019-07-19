@@ -22,12 +22,11 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentTransaction
 import android.transition.*
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.better.alarm.*
 import com.better.alarm.configuration.EditedAlarm
 import com.better.alarm.configuration.Store
@@ -51,7 +50,7 @@ import org.koin.dsl.module
 /**
  * This activity displays a list of alarms and optionally a details fragment.
  */
-class AlarmsListActivity : FragmentActivity() {
+class AlarmsListActivity : AppCompatActivity() {
     private lateinit var mActionBarHandler: ActionBarHandler
 
     // lazy because it seems that AlarmsListActivity.<init> can be called before Application.onCreate()
@@ -206,7 +205,8 @@ class AlarmsListActivity : FragmentActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        return mActionBarHandler.onCreateOptionsMenu(menu, menuInflater, actionBar)
+        return supportActionBar?.let { mActionBarHandler.onCreateOptionsMenu(menu, menuInflater, it) }
+                ?: false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
