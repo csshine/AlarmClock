@@ -18,6 +18,7 @@
 package com.better.alarm.presenter
 
 import android.annotation.TargetApi
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
@@ -28,14 +29,11 @@ import android.transition.*
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import com.better.alarm.BuildConfig
-import com.better.alarm.R
-import com.better.alarm.checkPermissions
+import com.better.alarm.*
 import com.better.alarm.configuration.AlarmApplication.container
 import com.better.alarm.configuration.AlarmApplication.themeHandler
 import com.better.alarm.configuration.EditedAlarm
 import com.better.alarm.interfaces.IAlarmsManager
-import com.better.alarm.lollipop
 import com.better.alarm.model.AlarmData
 import com.better.alarm.model.Alarmtone
 import com.better.alarm.model.DaysOfWeek
@@ -195,6 +193,16 @@ class AlarmsListActivity : FragmentActivity() {
     override fun onResume() {
         super.onResume()
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        if (notificationsBlocked()) {
+            AlertDialog.Builder(this).setTitle(getString(R.string.alarm_notify_text))
+                    .setMessage(getString(R.string.alert_notifications_are_disabled))
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
+                        openNotificationSettings()
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
+        }
     }
 
     override fun onStop() {
