@@ -17,11 +17,12 @@
 
 package com.better.alarm.presenter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -31,7 +32,7 @@ import com.better.alarm.configuration.InjectKt;
 /**
  * Settings for the Alarm Clock.
  */
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends FragmentActivity {
     private final DynamicThemeHandler dynamicThemeHandler = InjectKt.globalInject(DynamicThemeHandler.class).getValue();
 
     @Override

@@ -112,18 +112,25 @@ android {
 dependencies {
     // App dependencies
     implementation(kotlin("stdlib", version = "1.3.30"))
-    implementation("com.android.support:support-annotations:28.0.0")
     implementation("ch.acra:acra:4.6.1")
     implementation("com.melnykov:floatingactionbutton:1.2.0")
     implementation("io.reactivex.rxjava2:rxjava:2.2.0")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.0")
     implementation("com.f2prateek.rx.preferences2:rx-preferences:2.0.0")
-    implementation("com.android.support:support-v4:26.1.0") {}
     implementation("com.squareup.okhttp3:okhttp:4.0.1")
 
     implementation("org.koin:koin-core:2.0.1")
     implementation("org.koin:koin-core-ext:2.0.1")
     testImplementation("org.koin:koin-test:2.0.1")
+
+    val fragment_version = "1.2.2"
+    implementation("androidx.fragment:fragment:$fragment_version")
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
+    implementation("androidx.fragment:fragment-testing:$fragment_version")
+
+    val preference_version = "1.1.0"
+    implementation("androidx.preference:preference:$preference_version")
+    implementation("androidx.preference:preference-ktx:$preference_version")
 
     // Testing-only dependencies
     testImplementation("net.wuerl.kotlin:assertj-core-kotlin:0.1.1")

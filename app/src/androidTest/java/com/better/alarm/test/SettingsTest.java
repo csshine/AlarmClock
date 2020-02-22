@@ -1,11 +1,11 @@
 package com.better.alarm.test;
 
-import android.support.test.espresso.action.GeneralClickAction;
-import android.support.test.espresso.action.GeneralLocation;
-import android.support.test.espresso.action.Press;
-import android.support.test.espresso.action.Tap;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.espresso.action.GeneralClickAction;
+import androidx.test.espresso.action.GeneralLocation;
+import androidx.test.espresso.action.Press;
+import androidx.test.espresso.action.Tap;
+import androidx.test.rule.ActivityTestRule;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.better.alarm.R;
 import com.better.alarm.presenter.SettingsActivity;
@@ -20,7 +20,7 @@ import java.util.Locale;
 
 import cortado.Cortado;
 
-import static android.support.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.click;
 
 /**
  * Created by Yuriy on 11.07.2017.

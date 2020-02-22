@@ -22,8 +22,8 @@ import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentTransaction
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import android.transition.*
 import android.view.Menu
 import android.view.MenuItem
@@ -140,9 +140,9 @@ class AlarmsListActivity : FragmentActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState?.putInt("version", BuildConfig.VERSION_CODE)
+        outState.putInt("version", BuildConfig.VERSION_CODE)
         uiStore.editing().value?.writeInto(outState)
     }
 
@@ -314,7 +314,7 @@ class AlarmsListActivity : FragmentActivity() {
         }
     }
 
-    private fun RowHolder.addSharedElementsToTransition(fragmentTransaction: FragmentTransaction) {
+    private fun RowHolder.addSharedElementsToTransition(fragmentTransaction: androidx.fragment.app.FragmentTransaction) {
         fragmentTransaction.addSharedElement(digitalClock, "clock" + alarmId)
         fragmentTransaction.addSharedElement(container, "onOff" + alarmId)
         fragmentTransaction.addSharedElement(detailsButton, "detailsButton" + alarmId)
